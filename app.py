@@ -3,15 +3,11 @@ import numpy as np
 import pandas as pd
 from numpy import asarray
 import matplotlib.pyplot as plt
-import cv2
+from cv2 import cv2
 from PIL import Image
-import numpy as np
-import pandas as pd
 import tensorflow as tf
-import matplotlib.pyplot as plt
 from keras.applications.vgg16 import VGG16
 from tensorflow.keras.applications.vgg16 import preprocess_input
-import cv2
 from joblib import load
 from keras.applications.resnet50 import preprocess_input
 from keras.preprocessing import image as imge
