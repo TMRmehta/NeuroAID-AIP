@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from numpy import asarray
 import matplotlib.pyplot as plt
-from cv2 import cv2
+import cv2
 from PIL import Image
 import tensorflow as tf
 from keras.applications.vgg16 import VGG16
