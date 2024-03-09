@@ -82,7 +82,7 @@ with Diagnostics_tab:
           image = Image.open("Model_KNCF.jpg")
           st.image(image)
     elif (selected_model == 'KNC'):
-        Selectedmodel = load("KNC.joblib")
+        Selectedmodel = load("NB.joblib")
         Model_option = 0
         if (Model_Metrics_Selection):
           st.subheader(':green[Model Performance Metrics]')
@@ -124,7 +124,7 @@ with Diagnostics_tab:
           image = Image.open("Model_CNN.jpg")
           st.image(image)
     elif (selected_model == 'VGG16'):
-        Selectedmodel = load("VGG16.joblib")
+        Selectedmodel = load("NB.joblib")
         Model_option = 2
         if (Model_Metrics_Selection):
           st.subheader(':green[Model Performance Metrics]')
@@ -147,7 +147,7 @@ with Diagnostics_tab:
           image = Image.open("Model_XGBC.jpg")
           st.image(image)
     elif (selected_model == 'KNC'):
-        Selectedmodel = load("KNCC.joblib")
+        Selectedmodel = load("NB.joblib")
         Model_option = 0
         if (Model_Metrics_Selection):
           st.subheader(':green[Model Performance Metrics]')
@@ -175,7 +175,7 @@ with Diagnostics_tab:
           image = Image.open("Model_XGBC.jpg")
           st.image(image)
     elif (selected_model == 'VGG16'):
-        Selectedmodel = load("VGG16C.joblib")
+        Selectedmodel = load("NB.joblib")
         Model_option = 2
         if (Model_Metrics_Selection):
           st.subheader(':green[Model Performance Metrics]')
