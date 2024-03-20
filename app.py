@@ -12,9 +12,9 @@ from joblib import load
 from keras.applications.resnet50 import preprocess_input
 from keras.preprocessing import image as imge
 import keras
-#from tf_keras_vis.saliency import Saliency
-#from tf_keras_vis import utils as utils
-#from tf_keras_vis.utils import normalize
+from tf_keras_vis.saliency import Saliency
+from tf_keras_vis import utils as utils
+from tf_keras_vis.utils import normalize
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras import backend as K
 def cropping(img):
