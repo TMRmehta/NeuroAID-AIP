@@ -5,16 +5,20 @@ from numpy import asarray
 import matplotlib.pyplot as plt
 import cv2
 from PIL import Image
+import numpy as np
+import pandas as pd
 import tensorflow as tf
+import matplotlib.pyplot as plt
 from keras.applications.vgg16 import VGG16
 from tensorflow.keras.applications.vgg16 import preprocess_input
+import cv2
 from joblib import load
 from keras.applications.resnet50 import preprocess_input
 from keras.preprocessing import image as imge
 import keras
-#from tf_keras_vis.saliency import Saliency
-#from tf_keras_vis import utils as utils
-#from tf_keras_vis.utils import normalize
+from tf_keras_vis.saliency import Saliency
+from tf_keras_vis import utils as utils
+from tf_keras_vis.utils import normalize
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras import backend as K
 def cropping(img):
@@ -33,7 +37,7 @@ apptitle = 'NeuroAID'
 
 st.set_page_config(page_title=apptitle, page_icon=":brain:")
 #Image
-image = Image.open('Banner.jpg')
+image = Image.open('NeuroAID//Banner.jpg')
 st.image(image)
 st.markdown("<h1 style='text-align: center; color: blue;'>Brain Tumor Screening Diagnostics System</h1>", unsafe_allow_html=True)
 #st.title(":blue[Brain Tumor Screening Diagnostics System]")
@@ -60,16 +64,16 @@ else:
 Model_Metrics_Selection = st.sidebar.checkbox(':green[Show Model Performance Metrics]')
 st.sidebar.markdown("## :blue[Explainability Parameters]")
 #-- Choose Explainability Type
-selected_explainability = st.sidebar.radio(':green[Explainability Type]', ['Cohort Level', 'Patient Level'])
+selected_explainability = st.sidebar.radio(':green[Explainability Type]', ['Cohort Level','Patient Level'])
 #-- Choose Model
 if (selected_explainability == 'Cohort Level'):
     selected_ex_display = st.sidebar.selectbox(':green[Display]', ['Feature Importance Pareto and Brain Heat Map','Feature Importance Pareto', 'Brain Heat Map'])
 else:
-    selected_ex_display = st.sidebar.selectbox(':green[Display]', ['Contrast Map','Tumor Saliency Map'])
+    selected_ex_display = st.sidebar.selectbox(':green[Display]', ['Tumor Saliency Map','Contrast Map'])
 with Data_tab:
-  image = Image.open("DS1.jpg")
+  image = Image.open("NeuroAID//DS1.jpg")
   st.image(image)
-  image = Image.open("DS2.jpg")
+  image = Image.open("NeuroAID//DS2.jpg")
   st.image(image)
 with Diagnostics_tab:
   if (Selected_diagnosis == 'Detection'):
@@ -79,63 +83,63 @@ with Diagnostics_tab:
         Model_option = 3
         if (Model_Metrics_Selection):
           st.subheader(':green[Model Performance Metrics]')
-          image = Image.open("Model_KNCF.jpg")
+          image = Image.open("NeuroAID//Model_KNCF.jpg")
           st.image(image)
     elif (selected_model == 'KNC'):
-        Selectedmodel = load("NB.joblib")
+        Selectedmodel = load("KNC.joblib")
         Model_option = 0
         if (Model_Metrics_Selection):
           st.subheader(':green[Model Performance Metrics]')
-          image = Image.open("Model_KNC.jpg")
+          image = Image.open("NeuroAID//Model_KNC.jpg")
           st.image(image)
     elif (selected_model == 'Naive Bayes'):
         Selectedmodel = load("NB.joblib")
         Model_option = 0
         if (Model_Metrics_Selection):
           st.subheader(':green[Model Performance Metrics]')
-          image = Image.open("Model_NB.jpg")
+          image = Image.open("NeuroAID//Model_NB.jpg")
           st.image(image)
     elif (selected_model == 'Random Forest'):
         Selectedmodel = load("RF.joblib")
         Model_option = 0
         if (Model_Metrics_Selection):
           st.subheader(':green[Model Performance Metrics]')
-          image = Image.open("Model_RF.jpg")
+          image = Image.open("NeuroAID//Model_RF.jpg")
           st.image(image)
     elif (selected_model == 'Logistic Regression'):
         Selectedmodel = load("LR.joblib")
         Model_option = 0
         if (Model_Metrics_Selection):
           st.subheader(':green[Model Performance Metrics]')
-          image = Image.open("Model_LR.jpg")
+          image = Image.open("NeuroAID//Model_LR.jpg")
           st.image(image)
     elif (selected_model == 'XGBoost'):
         Selectedmodel = load("XGB.joblib")
         Model_option = 0
         if (Model_Metrics_Selection):
           st.subheader(':green[Model Performance Metrics]')
-          image = Image.open("Model_XGB.jpg")
+          image = Image.open("NeuroAID//Model_XGB.jpg")
           st.image(image)
     elif (selected_model == 'CNN'):
         Selectedmodel = load("CNN.joblib")
         Model_option = 1
         if (Model_Metrics_Selection):
           st.subheader(':green[Model Performance Metrics]')
-          image = Image.open("Model_CNN.jpg")
+          image = Image.open("NeuroAID//Model_CNN.jpg")
           st.image(image)
     elif (selected_model == 'VGG16'):
-        Selectedmodel = load("NB.joblib")
+        Selectedmodel = load("VGG16.joblib")
         Model_option = 2
         if (Model_Metrics_Selection):
           st.subheader(':green[Model Performance Metrics]')
-          image = Image.open("Model_VGG16.jpg")
+          image = Image.open("NeuroAID//Model_VGG16.jpg")
           st.image(image)
     else:
         Selectedmodel = load("KNCF.joblib")
         Model_option = 3
         if (Model_Metrics_Selection):
           st.subheader(':green[Model Performance Metrics]')
-          image = Image.open("Model_KNCF.jpg")
+          image = Image.open("NeuroAID//Model_KNCF.jpg")
           st.image(image)
   else:
     #Load selected model
@@ -144,49 +148,49 @@ with Diagnostics_tab:
         Model_option = 0
         if (Model_Metrics_Selection):
           st.subheader(':green[Model Performance Metrics]')
-          image = Image.open("Model_XGBC.jpg")
+          image = Image.open("NeuroAID//Model_XGBC.jpg")
           st.image(image)
     elif (selected_model == 'KNC'):
-        Selectedmodel = load("NB.joblib")
+        Selectedmodel = load("KNCC.joblib")
         Model_option = 0
         if (Model_Metrics_Selection):
           st.subheader(':green[Model Performance Metrics]')
-          image = Image.open("Model_KNCC.jpg")
+          image = Image.open("NeuroAID//Model_KNCC.jpg")
           st.image(image)
     elif (selected_model == 'Naive Bayes'):
         Selectedmodel = load("NBC.joblib")
         Model_option = 0
         if (Model_Metrics_Selection):
           st.subheader(':green[Model Performance Metrics]')
-          image = Image.open("Model_NBC.jpg")
+          image = Image.open("NeuroAID//Model_NBC.jpg")
           st.image(image)
     elif (selected_model == 'Random Forest'):
         Selectedmodel = load("RFC.joblib")
         Model_option = 0
         if (Model_Metrics_Selection):
           st.subheader(':green[Model Performance Metrics]')
-          image = Image.open("Model_RFC.jpg")
+          image = Image.open("NeuroAID//Model_RFC.jpg")
           st.image(image)
     elif (selected_model == 'XGBoost'):
         Selectedmodel = load("XGBC.joblib")
         Model_option = 0
         if (Model_Metrics_Selection):
           st.subheader(':green[Model Performance Metrics]')
-          image = Image.open("Model_XGBC.jpg")
+          image = Image.open("NeuroAID//Model_XGBC.jpg")
           st.image(image)
     elif (selected_model == 'VGG16'):
-        Selectedmodel = load("NB.joblib")
+        Selectedmodel = load("VGG16C.joblib")
         Model_option = 2
         if (Model_Metrics_Selection):
           st.subheader(':green[Model Performance Metrics]')
-          image = Image.open("Model_XGBC.jpg")
+          image = Image.open("NeuroAID//Model_XGBC.jpg")
           st.image(image)
     else:
         Selectedmodel = load("KNCFC.joblib")
         Model_option = 3
         if (Model_Metrics_Selection):
           st.subheader(':green[Model Performance Metrics]')
-          image = Image.open("Model_KNCC.jpg")
+          image = Image.open("NeuroAID//Model_KNCC.jpg")
           st.image(image)
 
   st.divider()
@@ -210,6 +214,24 @@ with Diagnostics_tab:
       #add in if statement here for the type of model
       pred = Selectedmodel.predict(flatten)
       pred_prob = Selectedmodel.predict_proba(flatten)
+      importances = Selectedmodel.feature_importances_
+      indices = np.argsort(importances)
+      top10 = []
+      top10 = indices[22491:22500]
+      importance = plt.figure(figsize=(4,4))
+      plt.title('Feature Importances')
+      plt.yticks(range(len(top10)),[i for i in top10])
+      plt.xlabel('Relative Importance')
+      plt.barh(range(len(top10)), importances[top10], color='b', align='center')
+      st.write("<h4 style='text-align: left; color: blue;'>For the uploaded image shown above explainability analyis was performed and the following plots show the tumorous areas.</h4>", unsafe_allow_html = True)
+      st.pyplot(importance)
+      img_shape = resize.shape
+      imp_reshaped = importances.reshape((150,150))
+      fig, ax = plt.subplots()
+      ax.matshow(imp_reshaped, cmap=plt.cm.hot)
+
+      plt.title("Pixel importances using impurity values")
+      st.pyplot(fig)
     elif (Model_option ==1):
       file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
       image = cv2.imdecode(file_bytes, 1)
@@ -231,11 +253,10 @@ with Diagnostics_tab:
       score = CategoricalScore([1])
 #Create Saliency object
       saliency = Saliency(model, clone=False)
-
       subplot_args = {
        'nrows': 1,
        'ncols': 1,
-        'figsize': (5, 4),
+        'figsize': (3, 2),
         'subplot_kw': {'xticks': [], 'yticks': []}
       }
 # Generate saliency map
@@ -291,11 +312,12 @@ with Diagnostics_tab:
       input = tf.image.resize(input, (150, 150))
       input = preprocess_input(input)
       input = np.reshape(input, (1,150,150,3))
-      im = imge.img_to_array(input)
-      img = preprocess_input(np.expand_dims(im.copy(), axis=0))
-      vgg_feature = base_model.predict(img)
+#      im = imge.img_to_array(input)
+#      img = preprocess_input(np.expand_dims(im.copy(), axis=0))
+      vgg_feature = base_model.predict(input)
       vgg_feature_np = np.array(vgg_feature)
-      array1 = np.array(vgg_feature_np.flatten())
+#      array1 = np.array(vgg_feature_np.flatten())
+      array1 = vgg_feature_np.flatten().reshape(1, -1)
       ypred = Selectedmodel.predict(array1)
       pred = np.argmax(ypred, axis=1)
       pred_prob = ypred
@@ -326,16 +348,16 @@ with Report_tab:
   if (selected_explainability == 'Cohort Level'):
     if (selected_ex_display == 'Feature Importance Pareto and Brain Heat Map'):
       if (Selected_diagnosis == 'Detection'):
-        image = Image.open("Cohort_D.jpg")
+        image = Image.open("NeuroAID//Cohort_D.jpg")
         st.image(image)
       else:
-        image = Image.open("Cohort_C.jpg")
+        image = Image.open("NeuroAID//Cohort_C.jpg")
         st.image(image)
   elif (selected_explainability == 'Patient Level'):
     if (selected_ex_display == 'Contrast Map' ):
       if (Selected_diagnosis == 'Detection'):
-        image = Image.open("Patient_D.jpg")
+        image = Image.open("NeuroAID//Patient_D.jpg")
         st.image(image)
       else:
-        image = Image.open("Patient_C.jpg")
+        image = Image.open("NeuroAID//Patient_C.jpg")
         st.image(image)
