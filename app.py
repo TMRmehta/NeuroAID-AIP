@@ -348,16 +348,16 @@ with Report_tab:
   if (selected_explainability == 'Cohort Level'):
     if (selected_ex_display == 'Feature Importance Pareto and Brain Heat Map'):
       if (Selected_diagnosis == 'Detection'):
-        image = Image.open("NeuroAID//Cohort_D.jpg")
+        image = Image.open("Cohort_D.jpg")
         st.image(image)
       else:
-        image = Image.open("NeuroAID//Cohort_C.jpg")
+        image = Image.open("Cohort_C.jpg")
         st.image(image)
   elif (selected_explainability == 'Patient Level'):
     if (selected_ex_display == 'Contrast Map' ):
       if (Selected_diagnosis == 'Detection'):
-        image = Image.open("NeuroAID//Patient_D.jpg")
+        image = Image.open("Patient_D.jpg")
         st.image(image)
       else:
-        image = Image.open("NeuroAID//Patient_C.jpg")
+        image = Image.open("Patient_C.jpg")
         st.image(image)
