@@ -33,8 +33,8 @@ apptitle = 'NeuroAID'
 
 st.set_page_config(page_title=apptitle, page_icon=":brain:")
 #Image
-#image = Image.open('Banner.jpg')
-#st.image(image)
+image = Image.open('Banner.jpg')
+st.image(image)
 st.markdown("<h1 style='text-align: center; color: blue;'>Brain Tumor Screening Diagnostics System</h1>", unsafe_allow_html=True)
 #st.title(":blue[Brain Tumor Screening Diagnostics System]")
 #Text
