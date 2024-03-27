@@ -11,4 +11,4 @@ keras==2.15.0
 seaborn==0.13.2
 opencv-python-headless==4.9.0.80
 tf_keras_vis
-
+streamlit_authenticator
