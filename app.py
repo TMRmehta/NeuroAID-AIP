@@ -69,7 +69,7 @@ with open(file_path, "rb") as file:
 #passwords = ["abc123", "abc123"]
 
 authenticator = stauth.Authenticate(names, usernames, hashed_passwords, "NeuroAID", "abcdef", cookie_expiry_days=30)
-image = Image.open('NeuroAID//Banner.jpg')
+image = Image.open('Banner.jpg')
 st.image(image)
 
 name, authentication_status, username = authenticator.login("NeuroAID Login", "main")
